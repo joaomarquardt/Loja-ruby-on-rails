@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar produto</title>
+    <style>
+        /* form {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            width: 200px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100px;
+        } */
+    </style>
+</head>
+<body>
+    <% @produto.errors.full_messages.each do |msg| %>
+        < class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+    <% end %>
+
+
+    <%= form_for @produto do |form| %>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <%= form.label :nome%>
+                    <%= form.text_field :nome, class:"form-control" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <%= form.label :descricao%>
+                    <%= form.text_area :descricao, class:"form-control", rows:4 %>
+                </div>
+            </div>
+        </div>
+
+                <div class="form-group">
+                    <%= form.label :departamento %>
+                    <%= form.collection_select :departamento_id, @departamentos, :id, :nome %>
+                </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <%= form.label :preco%>
+                    <%= form.number_field :preco, step:0.01, class:"form-control" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <%= form.label :quantidade%>
+                    <%= form.number_field :quantidade, class:"form-control" %>
+                </div>
+            </div>
+        </div>
+
+        <%= form.submit "Criar", class:"btn btn-primary" %>
+
+        <!--
+        <input type="text" name="produto[nome]" id="nome">
+        <label for="descricao">Descrição</label>
+        <textarea name="produto[descricao]" id="descricao"></textarea>
+        <label for="preco">Preço</label>
+        <input type="number" name="produto[preco]" id="descricao" step="0.01">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" name="produto[quantidade]" id="quantidade">
+
+        <button type="submit">Criar</button>
+        -->
+    <% end %>
+</body>
+</html>

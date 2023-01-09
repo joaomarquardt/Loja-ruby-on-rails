@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Departamentos</h1>
+
+<table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th>Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @departamentos.each do |departamento| %>
+      <tr>
+        <td><%= departamento.nome %></td>
+        <td><%= link_to 'Show', departamento %></td>
+        <td><%= link_to 'Edit', edit_departamento_path(departamento)%>
+        <td><%= link_to 'Destroy', departamento, data: {confirm: 'Are you sure?'}%> </td>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New departamento", new_departamento_path %>
