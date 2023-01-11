@@ -49,7 +49,8 @@ class DepartamentosController < ApplicationController
 
   # DELETE /departamentos/1 or /departamentos/1.json
   def destroy
-    @departamento.destroy
+      id = params[:id]
+      Departamento.destroy(id)
 
     respond_to do |format|
       format.html { redirect_to departamentos_url, notice: "Departamento was successfully destroyed." }
